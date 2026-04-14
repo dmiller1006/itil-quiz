@@ -616,6 +616,14 @@
 
 ---
 
+## Quiz — Service Request Management → Improve
+
+**Q:** How does service request management contribute to the "improve" value chain activity?
+
+**A:** It provides trend, quality, and feedback information about the fulfillment of service requests. (Not initiating standard changes — that's Design & transition.)
+
+---
+
 ## Quiz — Incident Management → Improve
 
 **Q:** Which value chain activity uses incident records as input to improvement activities based on incident frequency and severity?
