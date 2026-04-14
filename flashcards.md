@@ -583,3 +583,49 @@
 **A:** A person who authorizes the budget for service consumption.
 
 ---
+
+## Quiz — Value Streams & Processes vs Information & Technology
+
+**Q:** An organization sets up a 9-step automated process to purchase and deliver exam vouchers. Which dimension does this best represent?
+
+**A:** Value streams and processes — it focuses on the activities and how they are organized to create value. Even though technology performs the steps, the question is about the PROCESS, not the tools. When a scenario describes a workflow or series of steps, think value streams and processes first.
+
+---
+
+## Quiz — Deployment Management Purpose
+
+**Q:** What is the purpose of deployment management?
+
+**A:** Moving new or changed hardware, software, documentation, processes, or any other service component to live environments. (Not change enablement = risk/authorize/schedule. Not release management = make available for use.)
+
+---
+
+## Quiz — Change Enablement vs Release vs Deployment
+
+**Q:** What is the difference between change enablement, release management, and deployment management?
+
+**A:** Change enablement = assess risk, authorize, and schedule changes. Release management = make new/changed services and features available for use. Deployment management = physically move components to the live environment.
+
+---
+
+## Quiz — Service Request Management → Obtain/Build
+
+**Q:** How does service request management contribute to the "obtain/build" value chain activity?
+
+**A:** It acquires pre-approved service components to help fulfill service requests. (Design & transition = initiates standard changes. Obtain/build = acquires the components needed.)
+
+---
+
+## Quiz — Incident Management → Improve
+
+**Q:** Which value chain activity uses incident records as input to improvement activities based on incident frequency and severity?
+
+**A:** Improve. Incident records feed into the Improve activity to identify patterns and drive improvements based on how often and how severely incidents occur.
+
+---
+
+## Quiz — Design and Transition Purpose
+
+**Q:** Which value chain activity ensures that products and services continually meet stakeholder expectations for quality, costs, and time to market?
+
+**A:** Design and transition. It is the quality gate before go-live — ensuring what gets built matches what was promised in terms of quality, cost, and timing.
