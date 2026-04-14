@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>ITIL 4 Flashcards</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100dvh; overflow-x: hidden; }
+
+  /* -- Setup screen -- */
+  .screen { display: none; padding: 1rem; max-width: 480px; margin: 0 auto; }
+  .screen.active { display: block; }
+  h1 { font-size: 1.3rem; text-align: center; padding: 1rem 0 0.5rem; color: #94a3b8; }
+  h2 { font-size: 1rem; color: #64748b; margin: 1rem 0 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .cat-list { list-style: none; }
+  .cat-list li { padding: 0.7rem 0.8rem; border-bottom: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; }
+  .cat-list li.selected { background: #1e3a5f; }
+  .cat-list li .name { flex: 1; }
+  .cat-list li .badge { font-size: 0.75rem; color: #64748b; }
+  .cat-list li .badge .flag { color: #f59e0b; margin-left: 4px; }
+
+  .mode-btn { display: block; width: 100%; padding: 0.8rem; margin: 0.4rem 0; border: 1px solid #334155; border-radius: 8px; background: #1e293b; color: #e2e8f0; font-size: 0.95rem; text-align: left; cursor: pointer; }
+  .mode-btn:active { background: #334155; }
+  .mode-btn.primary { background: #2563eb; border-color: #2563eb; text-align: center; font-weight: 600; }
+  .mode-btn.primary:active { background: #1d4ed8; }
+  .mode-btn.danger { color: #f87171; border-color: #7f1d1d; }
+  .mode-btn.danger:active { background: #7f1d1d; }
+
+  /* -- Quiz screen -- */
+  .progress-bar { height: 3px; background: #1e293b; border-radius: 2px; margin-bottom: 1rem; }
+  .progress-fill { height: 100%; background: #2563eb; border-radius: 2px; transition: width 0.3s; }
+  .counter { text-align: center; font-size: 0.8rem; color: #64748b; margin-bottom: 0.5rem; }
+
+  .card { background: #1e293b; border-radius: 12px; min-height: 220px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; cursor: pointer; user-select: none; position: relative; transition: transform 0.15s; }
+  .card:active { transform: scale(0.98); }
+  .card .label { position: absolute; top: 0.75rem; left: 0.75rem; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: #475569; }
+  .card .flag-dot { position: absolute; top: 0.75rem; right: 0.75rem; font-size: 0.8rem; }
+  .card .text { font-size: 1.15rem; line-height: 1.5; }
+  .card.answer { background: #172554; }
+  .card.answer .text { font-size: 1rem; }
+
+  .hint { text-align: center; color: #475569; font-size: 0.75rem; margin-top: 0.6rem; }
+
+  .grade-row { display: flex; gap: 0.75rem; margin-top: 1rem; }
+  .grade-btn { flex: 1; padding: 1rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 600; cursor: pointer; }
+  .grade-btn.wrong { background: #991b1b; color: #fecaca; }
+  .grade-btn.wrong:active { background: #7f1d1d; }
+  .grade-btn.right { background: #166534; color: #bbf7d0; }
+  .grade-btn.right:active { background: #14532d; }
+
+  /* -- Results screen -- */
+  .score { text-align: center; font-size: 2.5rem; font-weight: 700; padding: 1.5rem 0; }
+  .score .label { font-size: 0.85rem; color: #64748b; font-weight: 400; display: block; margin-top: 0.25rem; }
+  .missed-list { list-style: none; margin: 0.5rem 0 1.5rem; }
+  .missed-list li { padding: 0.5rem 0; border-bottom: 1px solid #1e293b; font-size: 0.9rem; color: #fbbf24; }
+</style>
+</head>
+<body>
+
+<!-- SETUP -->
+<div id="setup" class="screen active">
+  <h1>ITIL 4 Flashcards</h1>
+  <h2>Categories</h2>
+  <ul id="catList" class="cat-list"></ul>
+  <div style="margin-top:1.2rem" id="modeSection"></div>
+  <label style="display:flex;align-items:center;gap:0.5rem;margin-top:1rem;color:#94a3b8;font-size:0.9rem;cursor:pointer;user-select:none"><input type="checkbox" id="chkShuffle" checked style="width:1.1rem;height:1.1rem;accent-color:#2563eb"> Shuffle cards</label>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="screen">
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="counter" id="counter"></div>
+  <div class="card" id="card"><span class="label" id="cardLabel"></span><span class="flag-dot" id="flagDot"></span><span class="text" id="cardText"></span></div>
+  <div class="hint" id="hint">tap to flip</div>
+  <div class="grade-row" id="gradeRow" style="display:none">
+    <button class="grade-btn wrong" id="btnWrong">Flag</button>
+    <button class="grade-btn right" id="btnRight">Continue</button>
+  </div>
+  <div style="text-align:center;margin-top:1rem"><button class="mode-btn" id="btnQuit" style="max-width:160px;margin:0 auto;text-align:center;color:#f87171;border-color:#7f1d1d">Quit</button></div>
+</div>
+
+<!-- RESULTS -->
+<div id="results" class="screen">
+  <h1>Results</h1>
+  <div class="score" id="scoreText"></div>
+  <div id="missedSection"></div>
+  <button class="mode-btn primary" id="btnRestart">Back to Menu</button>
+</div>
+
+<script>
+const CARDS = [
+  {"category": "Core Definitions", "front": "What is a service?", "back": "A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is a product?", "back": "A configuration of an organization's resources designed to offer value for a consumer.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is service management?", "back": "A set of specialized organizational capabilities for enabling value to customers in the form of services.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is value?", "back": "The perceived benefits, usefulness, and importance of something. Value is always subjective and determined by the recipient.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is an organization?", "back": "A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.", "flagged": false},
+  {"category": "Practices", "front": "What is a known error?", "back": "A problem that has been analyzed but not yet resolved. A workaround exists but the root cause has not been permanently fixed.", "flagged": false},
+  {"category": "Practices", "front": "What is error control in problem management?", "back": "The phase that manages known errors — assessing workarounds, deciding whether a permanent fix is worth pursuing, and monitoring until the problem is resolved.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of incident management?", "back": "To minimize the negative impact of incidents by restoring normal service operation as quickly as possible.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of problem management?", "back": "To reduce the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of the service desk practice?", "back": "To capture demand for incident resolution and service requests. It is the single point of contact between the service provider and all its users.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of service request management?", "back": "To support the agreed quality of a service by handling all pre-defined, user-initiated service requests in an effective and user-friendly manner.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of change enablement?", "back": "To maximize the number of successful IT changes by ensuring risks have been properly assessed, authorizing changes to proceed, and managing the change schedule.", "flagged": false},
+  {"category": "Practices", "front": "What is the purpose of service level management?", "back": "To set clear business-based targets for service levels, and to ensure that delivery of services is properly assessed, monitored, and managed against these targets.", "flagged": false},
+  {"category": "Quiz", "front": "What is the purpose of supplier management?", "back": "To ensure that the organization's suppliers and their performance are managed appropriately to support the provision of seamless, quality products and services.", "flagged": false},
+  {"category": "Quiz", "front": "What is the purpose of problem management? (not incident management)", "back": "Reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors. (Incident management = restore service ASAP. Problem management = find the cause.)", "flagged": false},
+  {"category": "Quiz", "front": "A customer takes responsibility for the [?] of service consumption.", "back": "Outcomes. (Not outputs, not costs.)", "flagged": false},
+  {"category": "Quiz", "front": "What is an IT asset?", "back": "Any valuable component that can contribute to the delivery of an IT product or service.", "flagged": false},
+  {"category": "Quiz", "front": "What is a configuration item?", "back": "Any component that needs to be managed in order to deliver an IT service. (An IT asset is a 'valuable component.' A CI is 'any component that needs to be managed.')", "flagged": false},
+  {"category": "Quiz", "front": "Which ITIL concept describes practices?", "back": "The Service Value System. The SVS components are: guiding principles, governance, service value chain, practices, and continual improvement.", "flagged": false},
+  {"category": "Quiz", "front": "Your team is configuring new routers based on design requirements before installation. Which value chain activity is this?", "back": "Obtain/build — ensures service components are available when and where needed and meet agreed specifications.", "flagged": false},
+  {"category": "Quiz", "front": "What is the key benefit of using an incident management system?", "back": "It can provide automated matching of incidents to problems or known errors. (It cannot automatically ensure SLA timeframes are met.)", "flagged": false},
+  {"category": "Quiz", "front": "What is usually included as part of incident management?", "back": "Scripts for collecting initial information about incidents. (It does NOT include detailed procedures for diagnosing incidents.)", "flagged": false},
+  {"category": "Quiz", "front": "You receive 13 calls about users unable to log on, all pointing to the domain controller. Is this an incident or a problem?", "back": "A problem — a cause, or potential cause, of one or more incidents. Multiple incidents with a common cause = problem.", "flagged": false},
+  {"category": "Quiz", "front": "How does service request management contribute to the 'deliver and support' value chain activity?", "back": "It ensures that users continue to be productive when they need assistance from the service provider.", "flagged": false},
+  {"category": "Quiz", "front": "SLA metrics show all green but users complain the service is unavailable. Why?", "back": "The data is not based on business outcomes. Teams often measure operational metrics instead of what matters to the business — a 'watermelon': green on the outside, red on the inside.", "flagged": false},
+  {"category": "Quiz", "front": "What does service request management do in the 'design and transition' value chain activity?", "back": "Initiates standard changes to fulfill service requests.", "flagged": false},
+  {"category": "Quiz", "front": "Which describes the functionality offered by a product or service to meet a particular need?", "back": "Utility — \"fit for purpose.\" (Not warranty, which is \"fit for use.\")", "flagged": false},
+  {"category": "Quiz", "front": "What are the three phases of problem management?", "back": "Problem identification, Problem control, Error control. (Problem classification is NOT a phase.)", "flagged": false},
+  {"category": "Quiz", "front": "How does service level management contribute to the \"plan\" value chain activity?", "back": "It provides information about actual service performance and trends to support planning of the product and service portfolio.", "flagged": false},
+  {"category": "Quiz", "front": "How does service level management contribute to the \"design and transition\" value chain activity?", "back": "It provides feedback from interactions with customers into new or changed services. (Not performance data — that's Plan. Customer feedback feeds into what gets designed or changed.)", "flagged": false},
+  {"category": "Quiz", "front": "How does service level management contribute to the \"deliver and support\" value chain activity?", "back": "It collects feedback during interactions and communicates service performance objectives to the operations and support teams.", "flagged": false},
+  {"category": "Quiz", "front": "Which practice captures demand for incident resolution and service requests?", "back": "The service desk. (Not incident management — incident management resolves incidents, it doesn't capture demand.)", "flagged": false},
+  {"category": "Quiz", "front": "Which guiding principle is most affected by customer experience (CX)?", "back": "Focus on value. Customer experience is a key element of value and must be actively managed.", "flagged": false},
+  {"category": "Quiz", "front": "Which is NOT a key focus of the partners and suppliers dimension: contracts and agreements, roles and responsibilities, security and compliance, or workflow management and inventory systems?", "back": "Workflow management and inventory systems — that belongs to the information and technology dimension.", "flagged": false},
+  {"category": "Quiz", "front": "Which continual improvement step states that each improvement initiative should support the organization's goals and objectives?", "back": "\"What is the vision?\" — step 1.", "flagged": false},
+  {"category": "Quiz", "front": "What is a normal change?", "back": "A change that needs to be assessed, authorized, and scheduled by a change authority. Not routine (standard change) and not urgent (emergency change).", "flagged": false},
+  {"category": "Practices", "front": "What is a practice?", "back": "A set of organized resources designed for performing work or accomplishing an objective. Each practice supports multiple service value chain activities.", "flagged": false},
+  {"category": "Practices", "front": "What are the three categories of ITIL 4 practices and how many are in each?", "back": "General management (14), Service management (17), Technical management (3). Total: 34 practices.", "flagged": false},
+  {"category": "Practices", "front": "What are the 14 general management practices?", "back": "Architecture management, Continual improvement, Information security management, Knowledge management, Measurement and reporting, Organizational change management, Portfolio management, Project management, Relationship management, Risk management, Service financial management, Strategy management, Supplier management, Workforce and talent management.", "flagged": false},
+  {"category": "Practices", "front": "What are the 17 service management practices?", "back": "Availability management, Business analysis, Capacity and performance management, Change enablement, Incident management, IT asset management, Monitoring and event management, Problem management, Release management, Service catalog management, Service configuration management, Service continuity management, Service design, Service desk, Service level management, Service request management, Service validation and testing.", "flagged": false},
+  {"category": "Practices", "front": "What are the 3 technical management practices?", "back": "Deployment management, Infrastructure and platform management, Software development and management.", "flagged": false},
+  {"category": "Continual Improvement", "front": "What is the purpose of the continual improvement practice?", "back": "To align the organization's practices and services with changing business needs through the ongoing identification and improvement of services, service components, practices, or any elements involved in the efficient and effective management of products and services.", "flagged": false},
+  {"category": "Continual Improvement", "front": "What are the 7 steps of the continual improvement model?", "back": "1) What is the vision? 2) Where are we now? 3) Where do we want to be? 4) How do we get there? 5) Take action. 6) Did we get there? 7) How do we keep the momentum going? Then repeat.", "flagged": false},
+  {"category": "Service Value Chain", "front": "What is the Service Value Chain?", "back": "A set of interconnected activities an organization performs to create value. It transforms inputs (demand/opportunity) into outputs (value). Not a linear sequence — activities can interact in any order.", "flagged": false},
+  {"category": "Service Value Chain", "front": "What are the 6 activities of the Service Value Chain?", "back": "Plan, Engage, Design & transition, Obtain/build, Deliver & support, Improve. All external interactions go through Engage; all improvement goes through Improve.", "flagged": false},
+  {"category": "Guiding Principles", "front": "What is a guiding principle?", "back": "A recommendation that guides an organization in all circumstances, applied universally to every initiative and stakeholder relationship regardless of changes in goals, strategies, or structure.", "flagged": false},
+  {"category": "Guiding Principles", "front": "What mnemonic helps remember the 7 guiding principles in order?", "back": "\"For Students, Practice Creates True Knowledge Online\" — Focus on value, Start where you are, Progress iteratively with feedback, Collaborate and promote visibility, Think and work holistically, Keep it simple and practical, Optimize and automate.", "flagged": false},
+  {"category": "Guiding Principles", "front": "What are the 7 guiding principles of ITIL 4?", "back": "1) Focus on value, 2) Start where you are, 3) Progress iteratively with feedback, 4) Collaborate and promote visibility, 5) Think and work holistically, 6) Keep it simple and practical, 7) Optimize and automate.", "flagged": false},
+  {"category": "Service Value System", "front": "What is the Service Value System (SVS)?", "back": "A description of how all components and activities of an organization work together as a system to enable value co-creation. Input is opportunity/demand; output is value.", "flagged": false},
+  {"category": "Service Value System", "front": "What are the components of the Service Value System?", "back": "Guiding principles, Governance, Service value chain, Practices (34 total), and Continual improvement.", "flagged": false},
+  {"category": "Four Dimensions", "front": "What are the four dimensions of service management?", "back": "1) Organizations & people, 2) Information & technology, 3) Partners & suppliers, 4) Value streams & processes. Every product and service should be considered from all four perspectives.", "flagged": false},
+  {"category": "Four Dimensions", "front": "What external factors affect all four dimensions of service management?", "back": "PESTLE — Political, Economical, Social, Technological, Legal, and Environmental factors.", "flagged": false},
+  {"category": "Service Offering", "front": "What is a service offering?", "back": "A description of one or more services designed to address the needs of a target consumer group. Can include goods, access to resources, and service actions.", "flagged": false},
+  {"category": "Service Offering", "front": "What are goods in the context of a service offering?", "back": "Things transferred from the service provider to the consumer, after which the consumer is responsible for their future use.", "flagged": false},
+  {"category": "Service Offering", "front": "What is 'access to resources' in the context of a service offering?", "back": "Access or a license granted to a consumer under agreed terms and conditions. The resources remain under the service provider's control.", "flagged": false},
+  {"category": "Service Offering", "front": "What are service actions in the context of a service offering?", "back": "Actions performed to address a consumer's need, such as ongoing technical support or security updates.", "flagged": false},
+  {"category": "Roles", "front": "What is a service provider?", "back": "A role performed by an organization in a service relationship to provide services to consumers.", "flagged": false},
+  {"category": "Roles", "front": "What is a consumer?", "back": "A role performed by an organization in a service relationship that uses or consumes those services.", "flagged": false},
+  {"category": "Roles", "front": "What is a user?", "back": "A person who uses a service.", "flagged": false},
+  {"category": "Roles", "front": "What is a customer?", "back": "A person who defines the requirements for a service and takes responsibility for the outcomes of service consumption.", "flagged": false},
+  {"category": "Roles", "front": "What is a sponsor?", "back": "A person who authorizes the budget for service consumption.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is utility?", "back": "The functionality offered by a product or service to meet a particular need. What the service does. Also called \"fit for purpose.\"", "flagged": false},
+  {"category": "Core Definitions", "front": "What is warranty?", "back": "The assurance that a product or service will meet agreed requirements. How the service performs. Also called \"fit for use.\"", "flagged": false},
+  {"category": "Core Definitions", "front": "What is the difference between utility and warranty?", "back": "Utility = what a service does (fit for purpose). Warranty = how a service performs (fit for use). Both are required for a service to be successful.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is risk?", "back": "A possible event that could cause harm, loss, or make it more difficult to achieve objectives.", "flagged": false},
+  {"category": "Core Definitions", "front": "What are the 4 ways to handle risk?", "back": "Avoid (remove it completely), Accept (acknowledge and take no action), Transfer (shift responsibility to a third party, e.g. insurance), Mitigate (reduce the risk without eliminating it).", "flagged": false},
+  {"category": "Core Definitions", "front": "What is cost?", "back": "The amount of money spent on a particular activity or resource.", "flagged": false},
+  {"category": "Core Definitions", "front": "What is an output?", "back": "A tangible or intangible deliverable produced by carrying out an activity. (Different from outcome — an outcome is the result for a stakeholder enabled by one or more outputs.)", "flagged": false},
+  {"category": "Core Definitions", "front": "What is an outcome?", "back": "A result for a stakeholder, enabled by one or more outputs.", "flagged": false},
+  {"category": "Service Relationships", "front": "What is a service relationship?", "back": "A cooperation between a service provider and a service consumer that includes service provision, service consumption, and service relationship management.", "flagged": false},
+  {"category": "Service Relationships", "front": "What is service provision?", "back": "The activities performed by an organization to provide services, including managing resources, providing access to users, fulfilling service actions, and conducting service level management and continual improvement.", "flagged": false},
+  {"category": "Service Relationships", "front": "What is service consumption?", "back": "The activities performed by an organization or person to consume services, including managing consumer resources needed to use the service and requesting service actions.", "flagged": false},
+  {"category": "Service Relationships", "front": "What is service relationship management?", "back": "The joint activities performed by both the service provider and service consumer to enable value co-creation based on agreed and available service offerings.", "flagged": false}
+];
+
+const LS_KEY = 'itil4_flags';
+
+function loadFlags() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LS_KEY));
+    if (saved) {
+      const map = {};
+      saved.forEach(f => map[f] = true);
+      CARDS.forEach(c => { c.flagged = !!map[c.front]; });
+    }
+  } catch(e) {}
+}
+
+function saveFlags() {
+  const flagged = CARDS.filter(c => c.flagged).map(c => c.front);
+  localStorage.setItem(LS_KEY, JSON.stringify(flagged));
+}
+
+loadFlags();
+
+// --- State ---
+let deck = [];
+let idx = 0;
+let flipped = false;
+let correct = 0;
+let wrong = [];
+
+// --- Screens ---
+function show(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// --- Setup ---
+let currentSelected = new Set();
+
+function buildSetup() {
+  const cats = [...new Set(CARDS.map(c => c.category))].sort();
+  const list = document.getElementById('catList');
+  list.innerHTML = '';
+  cats.forEach(cat => {
+    const total = CARDS.filter(c => c.category === cat).length;
+    const flagged = CARDS.filter(c => c.category === cat && c.flagged).length;
+    const li = document.createElement('li');
+    if (currentSelected.has(cat)) li.classList.add('selected');
+    li.innerHTML = `<span class="name">${cat}</span><span class="badge">${total}${flagged ? `<span class="flag">⚑${flagged}</span>` : ''}</span>`;
+    li.addEventListener('click', () => {
+      if (currentSelected.has(cat)) currentSelected.delete(cat);
+      else currentSelected.add(cat);
+      li.classList.toggle('selected');
+      buildModeSection();
+    });
+    list.appendChild(li);
+  });
+  buildModeSection();
+}
+
+function buildModeSection() {
+  const section = document.getElementById('modeSection');
+  section.innerHTML = '';
+
+  const btn = document.createElement('button');
+  btn.className = 'mode-btn primary';
+  const pool = currentSelected.size > 0 ? CARDS.filter(c => currentSelected.has(c.category)) : CARDS;
+  btn.textContent = `Study${currentSelected.size ? ' Selected' : ' All'} (${pool.length})`;
+  btn.onclick = () => launchQuiz();
+  section.appendChild(btn);
+
+  const allFlagged = CARDS.filter(c => c.flagged);
+  const btnFlagged = document.createElement('button');
+  btnFlagged.className = 'mode-btn';
+  btnFlagged.textContent = `Flagged Only (${allFlagged.length})`;
+  if (allFlagged.length) {
+    btnFlagged.style.cssText = 'border-color:#f59e0b;color:#f59e0b';
+    btnFlagged.onclick = () => launchFlagged();
+  } else {
+    btnFlagged.disabled = true;
+    btnFlagged.style.opacity = '0.35';
+  }
+  section.appendChild(btnFlagged);
+
+  if (allFlagged.length) {
+    const btnClear = document.createElement('button');
+    btnClear.className = 'mode-btn danger';
+    btnClear.textContent = 'Clear All Flags';
+    btnClear.onclick = () => { CARDS.forEach(c => c.flagged = false); saveFlags(); buildSetup(); };
+    section.appendChild(btnClear);
+  }
+}
+
+function launchFlagged() {
+  let pool = CARDS.filter(c => c.flagged);
+  if (!pool.length) return;
+  deck = document.getElementById('chkShuffle').checked ? shuffle([...pool]) : [...pool];
+  idx = 0; correct = 0; wrong = []; flipped = false;
+  show('quiz');
+  renderCard();
+}
+
+function launchQuiz() {
+  let pool = currentSelected.size > 0 ? CARDS.filter(c => currentSelected.has(c.category)) : CARDS;
+  if (!pool.length) return;
+  deck = document.getElementById('chkShuffle').checked ? shuffle([...pool]) : [...pool];
+  idx = 0; correct = 0; wrong = []; flipped = false;
+  show('quiz');
+  renderCard();
+}
+
+// --- Quiz ---
+function renderCard() {
+  const card = deck[idx];
+  document.getElementById('counter').textContent = `${idx + 1} / ${deck.length}`;
+  document.getElementById('progressFill').style.width = `${((idx) / deck.length) * 100}%`;
+  document.getElementById('cardLabel').textContent = card.category;
+  document.getElementById('flagDot').textContent = card.flagged ? '\u2691' : '';
+  document.getElementById('cardText').textContent = card.front;
+  document.getElementById('card').className = 'card';
+  document.getElementById('hint').textContent = 'tap to flip';
+  document.getElementById('gradeRow').style.display = 'none';
+  flipped = false;
+}
+
+function flipCard() {
+  if (flipped) return;
+  flipped = true;
+  const card = deck[idx];
+  document.getElementById('cardText').textContent = card.back;
+  document.getElementById('card').className = 'card answer';
+  document.getElementById('hint').textContent = '';
+  document.getElementById('gradeRow').style.display = 'flex';
+}
+
+function grade(isCorrect) {
+  const card = deck[idx];
+  if (isCorrect) {
+    correct++;
+  } else {
+    wrong.push(card);
+    card.flagged = true;
+  }
+  saveFlags();
+  idx++;
+  if (idx >= deck.length) { showResults(); return; }
+  renderCard();
+}
+
+document.getElementById('card').addEventListener('click', flipCard);
+document.getElementById('btnWrong').addEventListener('click', () => grade(false));
+document.getElementById('btnRight').addEventListener('click', () => grade(true));
+document.getElementById('btnQuit').addEventListener('click', () => showResults());
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  const quizActive = document.getElementById('quiz').classList.contains('active');
+  if (!quizActive) return;
+  if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (!flipped) flipCard(); }
+  if (flipped && (e.key === 'n' || e.key === 'ArrowLeft')) grade(false);
+  if (flipped && (e.key === 'y' || e.key === 'ArrowRight')) grade(true);
+});
+
+// --- Results ---
+function showResults() {
+  show('results');
+  const pct = deck.length ? Math.round((correct / deck.length) * 100) : 0;
+  document.getElementById('scoreText').innerHTML = `${correct}/${deck.length}<span class="label">${pct}%</span>`;
+
+  let html = '';
+  if (wrong.length) {
+    html += '<h2>Missed (now flagged)</h2><ul class="missed-list">';
+    wrong.forEach(c => { html += `<li>${c.front}</li>`; });
+    html += '</ul>';
+  }
+  document.getElementById('missedSection').innerHTML = html;
+}
+
+document.getElementById('btnRestart').addEventListener('click', () => { show('setup'); buildSetup(); });
+
+// --- Util ---
+function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+// Init
+buildSetup();
+</script>
+</body>
+</html>

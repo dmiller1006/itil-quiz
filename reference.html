@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITIL 4 — Practice × Value Chain Reference</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; margin: 0; padding: 1.5rem; }
+  h1 { font-size: 1.2rem; color: #7dd3fc; margin-bottom: 0.25rem; }
+  p.sub { color: #94a3b8; font-size: 0.85rem; margin: 0 0 1.5rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  thead tr { background: #1e3a5f; }
+  th { padding: 0.6rem 0.75rem; text-align: left; color: #7dd3fc; font-weight: 600; border-bottom: 2px solid #334155; white-space: nowrap; }
+  td { padding: 0.55rem 0.75rem; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tr:hover td { background: #1e293b; }
+  .practice { font-weight: 600; color: #f8fafc; white-space: nowrap; }
+  .cell { color: #cbd5e1; }
+  .empty { color: #334155; }
+  .tag { display: inline-block; background: #1e3a5f; color: #7dd3fc; border-radius: 4px; padding: 0.1rem 0.4rem; font-size: 0.75rem; margin-bottom: 0.3rem; }
+
+  h2 { font-size: 1rem; color: #7dd3fc; margin: 2rem 0 0.75rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+  .card { background: #1e293b; border-radius: 8px; padding: 1rem; border-left: 3px solid #3b82f6; }
+  .card .q { color: #94a3b8; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.4rem; }
+  .card .a { color: #e2e8f0; font-size: 0.88rem; line-height: 1.5; }
+  .card .a strong { color: #7dd3fc; }
+</style>
+</head>
+<body>
+
+<h1>ITIL 4 — How Practices Contribute to Value Chain Activities</h1>
+<p class="sub">Each practice contributes differently to each activity based on what that practice is fundamentally for.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Practice</th>
+      <th>Plan</th>
+      <th>Engage</th>
+      <th>Design &amp; Transition</th>
+      <th>Obtain / Build</th>
+      <th>Deliver &amp; Support</th>
+      <th>Improve</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="practice">Service Level<br>Management</td>
+      <td class="cell">Provides info on actual <strong>service performance and trends</strong></td>
+      <td class="cell">Collects requirements; sets performance expectations with customers</td>
+      <td class="cell">Provides <strong>feedback from customer interactions</strong> into new/changed services</td>
+      <td class="empty">—</td>
+      <td class="cell">Collects feedback; communicates <strong>performance objectives</strong> to ops/support teams</td>
+      <td class="cell">Provides performance data to feed improvement initiatives</td>
+    </tr>
+    <tr>
+      <td class="practice">Service Request<br>Management</td>
+      <td class="empty">—</td>
+      <td class="cell">Handles user requests as the primary interaction channel</td>
+      <td class="cell">Initiates <strong>standard changes</strong> to fulfill service requests</td>
+      <td class="cell">Acquires pre-approved service components to fulfill requests</td>
+      <td class="cell">Ensures users stay <strong>productive</strong> when they need assistance</td>
+      <td class="empty">—</td>
+    </tr>
+    <tr>
+      <td class="practice">Incident<br>Management</td>
+      <td class="empty">—</td>
+      <td class="cell">Provides a channel for users to report incidents</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="cell">Restores <strong>normal service operation</strong> as quickly as possible; minimizes impact</td>
+      <td class="cell">Reviews incidents to identify improvement opportunities</td>
+    </tr>
+    <tr>
+      <td class="practice">Problem<br>Management</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="cell">Reduces <strong>likelihood and impact</strong> of incidents; manages known errors and workarounds</td>
+      <td class="cell">Identifies root causes; drives permanent fixes</td>
+    </tr>
+    <tr>
+      <td class="practice">Change<br>Enablement</td>
+      <td class="cell">Provides change schedule info for planning</td>
+      <td class="empty">—</td>
+      <td class="cell">Ensures changes are <strong>assessed, authorized, and scheduled</strong></td>
+      <td class="cell">Ensures components are built/acquired following approved change process</td>
+      <td class="cell">Deploys approved changes into production</td>
+      <td class="empty">—</td>
+    </tr>
+    <tr>
+      <td class="practice">Service Desk</td>
+      <td class="empty">—</td>
+      <td class="cell"><strong>Single point of contact</strong>; captures demand for incidents and requests</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="cell">Handles incidents and service requests; keeps users informed</td>
+      <td class="cell">Provides user feedback and trend data</td>
+    </tr>
+    <tr>
+      <td class="practice">Continual<br>Improvement</td>
+      <td class="cell">Contributes improvement plans to organizational strategy</td>
+      <td class="empty">—</td>
+      <td class="cell">Embeds improvement into design of new/changed services</td>
+      <td class="empty">—</td>
+      <td class="empty">—</td>
+      <td class="cell">Primary owner of the <strong>Improve</strong> activity; drives all improvement initiatives</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Key Distinctions (Exam Traps)</h2>
+<div class="card-grid">
+
+  <div class="card">
+    <div class="q">SLM Design &amp; Transition vs Plan</div>
+    <div class="a">
+      <strong>Plan</strong> = performance data &amp; trends (numbers)<br>
+      <strong>Design &amp; Transition</strong> = customer feedback (what customers said)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q">SRM Design &amp; Transition vs Deliver &amp; Support</div>
+    <div class="a">
+      <strong>Design &amp; Transition</strong> = initiates standard changes<br>
+      <strong>Deliver &amp; Support</strong> = keeps users productive
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q">Service Desk vs Incident Management</div>
+    <div class="a">
+      <strong>Service desk</strong> = captures demand (single point of contact)<br>
+      <strong>Incident management</strong> = resolves incidents (restore service ASAP)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q">Incident vs Problem Management</div>
+    <div class="a">
+      <strong>Incident</strong> = restore service ASAP (fix the symptom)<br>
+      <strong>Problem</strong> = find the root cause (fix the cause)
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q">Standard vs Normal vs Emergency Change</div>
+    <div class="a">
+      <strong>Standard</strong> = pre-approved, low risk, routine (SRM initiates these)<br>
+      <strong>Normal</strong> = assessed, authorized, scheduled by change authority<br>
+      <strong>Emergency</strong> = urgent, expedited authorization
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="q">SLM Watermelon Effect</div>
+    <div class="a">
+      SLA metrics show green but users complain — data not based on <strong>business outcomes</strong>. Green outside, red inside.
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
