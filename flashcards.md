@@ -1,639 +1,321 @@
 # ITIL 4 Flashcards
 
-## Service
+---
 
-**Q:** What is a service?
+## LAYER 1 — SVC Activity Purposes
 
-**A:** A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.
+**Q:** What is the purpose of the **Plan** value chain activity?
+
+**A:** To ensure a shared understanding of the vision, current status, and improvement direction for all four dimensions and all products and services across the organization.
 
 ---
 
-## Product
+**Q:** What is the purpose of the **Engage** value chain activity?
 
-**Q:** What is a product?
-
-**A:** A configuration of an organization's resources designed to offer value for a consumer.
+**A:** To provide a good understanding of stakeholder needs, transparency, and continual engagement and good relationships with all stakeholders.
 
 ---
 
-## Known Error
+**Q:** What is the purpose of the **Design and transition** value chain activity?
 
-**Q:** What is a known error?
-
-**A:** A problem that has been analyzed but not yet resolved. A workaround exists but the root cause has not been permanently fixed.
+**A:** To ensure that products and services continually meet stakeholder expectations for quality, costs, and time to market.
 
 ---
 
-## Error Control
+**Q:** What is the purpose of the **Obtain/build** value chain activity?
 
-**Q:** What is error control in problem management?
-
-**A:** The phase that manages known errors — assessing workarounds, deciding whether a permanent fix is worth pursuing, and monitoring until the problem is resolved.
+**A:** To ensure that service components are available when and where they are needed, and meet agreed specifications.
 
 ---
 
-## Incident Management
+**Q:** What is the purpose of the **Deliver and support** value chain activity?
 
-**Q:** What is the purpose of incident management?
-
-**A:** To minimize the negative impact of incidents by restoring normal service operation as quickly as possible.
+**A:** To ensure that services are delivered and supported according to agreed specifications and stakeholders' expectations.
 
 ---
 
-## Problem Management
+**Q:** What is the purpose of the **Improve** value chain activity?
 
-**Q:** What is the purpose of problem management?
-
-**A:** To reduce the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors.
+**A:** To ensure continual improvement of products, services, and practices across all value chain activities and the four dimensions of service management.
 
 ---
 
-## Service Desk
+## X IN Y — Service Level Management (SLM)
 
-**Q:** What is the purpose of the service desk practice?
+**Q:** How does SLM contribute to **Plan**?
 
-**A:** To capture demand for incident resolution and service requests. It is the single point of contact between the service provider and all its users.
-
----
-
-## Service Request Management
-
-**Q:** What is the purpose of service request management?
-
-**A:** To support the agreed quality of a service by handling all pre-defined, user-initiated service requests in an effective and user-friendly manner.
+**A:** It supports planning of the product and service portfolio and service offerings with information about actual service performance and trends.
 
 ---
 
-## Change Enablement
+**Q:** How does SLM contribute to **Engage**?
 
-**Q:** What is the purpose of change enablement?
-
-**A:** To maximize the number of successful IT changes by ensuring risks have been properly assessed, authorizing changes to proceed, and managing the change schedule.
+**A:** It ensures ongoing engagement with customers and users through feedback processing and continual service review.
 
 ---
 
-## Service Level Management
+**Q:** How does SLM contribute to **Design and transition**?
 
-**Q:** What is the purpose of service level management?
-
-**A:** To set clear business-based targets for service levels, and to ensure that delivery of services is properly assessed, monitored, and managed against these targets.
+**A:** The design and development of new and changed services receives input from this practice, through interaction with customers and as part of the feedback loop in transition.
 
 ---
 
-## Quiz — Supplier Management Purpose
+**Q:** How does SLM contribute to **Obtain/build**?
 
-**Q:** What is the purpose of supplier management?
-
-**A:** To ensure that the organization's suppliers and their performance are managed appropriately to support the provision of seamless, quality products and services.
+**A:** It provides objectives for components and service performance, as well as for measurement and reporting capabilities of the products and services.
 
 ---
 
-## Quiz — Problem Management (again)
+**Q:** How does SLM contribute to **Deliver and support**?
 
-**Q:** What is the purpose of problem management? (not incident management)
-
-**A:** Reducing the likelihood and impact of incidents by identifying actual and potential causes of incidents, and managing workarounds and known errors. (Incident management = restore service ASAP. Problem management = find the cause.)
+**A:** It communicates service performance objectives to the operations and support teams and collects their feedback as an input for service improvement.
 
 ---
 
-## Quiz — Customer Definition (outcomes vs outputs)
+**Q:** How does SLM contribute to **Improve**?
 
-**Q:** A customer takes responsibility for the [?] of service consumption.
-
-**A:** Outcomes. (Not outputs, not costs.)
+**A:** Service feedback from users, as well as requirements from customers, can be a driving force for service improvement.
 
 ---
 
-## Quiz — IT Asset
+## X IN Y — Service Request Management (SRM)
 
-**Q:** What is an IT asset?
+**Q:** How does SRM contribute to **Engage**?
 
-**A:** Any valuable component that can contribute to the delivery of an IT product or service.
-
----
-
-## Quiz — Configuration Item
-
-**Q:** What is a configuration item?
-
-**A:** Any component that needs to be managed in order to deliver an IT service. (An IT asset is "valuable component." A CI is "any component that needs to be managed.")
+**A:** It handles user requests as the primary interaction channel between users and the service provider.
 
 ---
 
-## Quiz — Where are practices described?
+**Q:** How does SRM contribute to **Design and transition**?
 
-**Q:** Which ITIL concept describes practices?
-
-**A:** The Service Value System. The SVS components are: guiding principles, governance, service value chain, practices, and continual improvement.
+**A:** It initiates standard changes to fulfill service requests.
 
 ---
 
-## Quiz — Obtain/Build vs Design and Transition
+**Q:** How does SRM contribute to **Obtain/build**?
 
-**Q:** Your team is configuring new routers based on design requirements before installation. Which value chain activity is this?
-
-**A:** Obtain/build — ensures service components are available when and where needed and meet agreed specifications.
+**A:** It acquires pre-approved service components to fulfill service requests.
 
 ---
 
-## Quiz — Incident Management System Benefit
-
-**Q:** What is the key benefit of using an incident management system?
-
-**A:** It can provide automated matching of incidents to problems or known errors. (It cannot automatically ensure SLA timeframes are met.)
-
----
-
-## Quiz — What Incident Management Includes
-
-**Q:** What is usually included as part of incident management?
-
-**A:** Scripts for collecting initial information about incidents. (It does NOT include detailed procedures for diagnosing incidents.)
-
----
-
-## Quiz — Problem vs Incident
-
-**Q:** You receive 13 calls about users unable to log on, all pointing to the domain controller. Is this an incident or a problem?
-
-**A:** A problem — a cause, or potential cause, of one or more incidents. Multiple incidents with a common cause = problem.
-
----
-
-## Quiz — Service Request Management → Deliver and Support
-
-**Q:** How does service request management contribute to the "deliver and support" value chain activity?
+**Q:** How does SRM contribute to **Deliver and support**?
 
 **A:** It ensures that users continue to be productive when they need assistance from the service provider.
 
 ---
 
-## Quiz — SLM Watermelon
+**Q:** How does SRM contribute to **Improve**?
 
-**Q:** SLA metrics show all green but users complain the service is unavailable. Why?
-
-**A:** The data is not based on business outcomes. Teams often measure operational metrics (e.g. server uptime) instead of what matters to the business — a "watermelon": green on the outside, red on the inside.
+**A:** It provides trend, quality, and feedback information about the fulfillment of service requests. It also provides a channel for improvement initiatives, compliments, and complaints from users.
 
 ---
 
-## Quiz — Service Request Management → Design and Transition
+## X IN Y — Incident Management
 
-**Q:** What does service request management do in the "design and transition" value chain activity?
+**Q:** How does incident management contribute to **Engage**?
 
-**A:** Initiates standard changes to fulfill service requests.
-
----
-
-## Quiz — Utility vs Warranty
-
-**Q:** Which describes the functionality offered by a product or service to meet a particular need?
-
-**A:** Utility — "fit for purpose." (Not warranty, which is "fit for use.")
+**A:** It provides a channel for users to report incidents.
 
 ---
 
-## Quiz — Problem Management Phases
+**Q:** How does incident management contribute to **Deliver and support**?
 
-**Q:** What are the three phases of problem management?
-
-**A:** Problem identification, Problem control, Error control. (Problem classification is NOT a phase.)
+**A:** It restores normal service operation as quickly as possible and minimizes the negative impact of incidents.
 
 ---
 
-## Quiz — Service Level Management → Plan activity
+**Q:** How does incident management contribute to **Improve**?
 
-**Q:** How does service level management contribute to the "plan" value chain activity?
-
-**A:** It provides information about actual service performance and trends to support planning of the product and service portfolio.
+**A:** It reviews incident records to identify improvement opportunities based on incident frequency and severity.
 
 ---
 
-## Quiz — Service Level Management → Design and Transition
+## X IN Y — Problem Management
 
-**Q:** How does service level management contribute to the "design and transition" value chain activity?
+**Q:** How does problem management contribute to **Deliver and support**?
 
-**A:** It provides feedback from interactions with customers into new or changed services. (Not performance data — that's Plan. Feedback from customers feeds into what gets designed or changed.)
-
----
-
-## Quiz — Service Level Management → Deliver and Support
-
-**Q:** How does service level management contribute to the "deliver and support" value chain activity?
-
-**A:** It collects feedback during interactions and communicates service performance objectives to the operations and support teams.
+**A:** It reduces the likelihood and impact of incidents by managing workarounds and known errors.
 
 ---
 
-## Quiz — Service Desk vs Incident Management
+**Q:** How does problem management contribute to **Improve**?
 
-**Q:** Which practice captures demand for incident resolution and service requests?
-
-**A:** The service desk. (Not incident management — incident management is the practice of resolving incidents, not capturing demand.)
+**A:** It identifies root causes of incidents and drives permanent fixes.
 
 ---
 
-## Quiz — Focus on Value and CX
+## X IN Y — Change Enablement
 
-**Q:** Which guiding principle is most affected by customer experience (CX)?
+**Q:** How does change enablement contribute to **Plan**?
 
-**A:** Focus on value. Customer experience is a key element of value and must be actively managed.
-
----
-
-## Quiz — Partners & Suppliers Dimension
-
-**Q:** Which of these is NOT a key focus of the partners and suppliers dimension: contracts and agreements, roles and responsibilities, security and compliance, or workflow management and inventory systems?
-
-**A:** Workflow management and inventory systems — that belongs to the information and technology dimension.
+**A:** Changes to product and service portfolios, policies, and practices all require a level of control — change enablement provides it.
 
 ---
 
-## Quiz — Continual Improvement: What is the Vision?
+**Q:** How does change enablement contribute to **Engage**?
 
-**Q:** Which continual improvement step states that each improvement initiative should support the organization's goals and objectives?
-
-**A:** "What is the vision?" — step 1.
+**A:** Customers and users may need to be consulted or informed about changes, depending on the nature of the change.
 
 ---
 
-## Quiz — Normal Change
+**Q:** How does change enablement contribute to **Design and transition**?
 
-**Q:** What is a normal change?
-
-**A:** A change that needs to be assessed, authorized, and scheduled by a change authority. Not routine (standard change) and not urgent (emergency change).
+**A:** Many changes are initiated due to new or changed services. The change enablement practice is a major contributor to transition.
 
 ---
 
-## Practice
+**Q:** How does change enablement contribute to **Obtain/build**?
 
-**Q:** What is a practice?
-
-**A:** A set of organized resources designed for performing work or accomplishing an objective. Each practice supports multiple service value chain activities.
+**A:** Changes to components are subject to change enablement, whether they are built in-house or obtained from suppliers.
 
 ---
 
-## Three Categories of ITIL 4 Practices
+**Q:** How does change enablement contribute to **Deliver and support**?
 
-**Q:** What are the three categories of ITIL 4 practices and how many are in each?
-
-**A:** General management (14), Service management (17), Technical management (3). Total: 34 practices.
+**A:** Changes may have an impact on delivery and support, so information about changes must be communicated to D&S personnel. Those personnel may also play a part in assessing and authorizing changes.
 
 ---
 
-## General Management Practices (14)
+**Q:** How does change enablement contribute to **Improve**?
 
-**Q:** What are the 14 general management practices?
-
-**A:** Architecture management, Continual improvement, Information security management, Knowledge management, Measurement and reporting, Organizational change management, Portfolio management, Project management, Relationship management, Risk management, Service financial management, Strategy management, Supplier management, Workforce and talent management.
+**A:** Many improvements will require changes to be made — these must be assessed and authorized the same way as all other changes.
 
 ---
 
-## Service Management Practices (17)
+## X IN Y — Service Desk
 
-**Q:** What are the 17 service management practices?
+**Q:** How does the service desk contribute to **Engage**?
 
-**A:** Availability management, Business analysis, Capacity and performance management, Change enablement, Incident management, IT asset management, Monitoring and event management, Problem management, Release management, Service catalog management, Service configuration management, Service continuity management, Service design, Service desk, Service level management, Service request management, Service validation and testing.
-
----
-
-## Technical Management Practices (3)
-
-**Q:** What are the 3 technical management practices?
-
-**A:** Deployment management, Infrastructure and platform management, Software development and management.
+**A:** It is the single point of contact between the service provider and all its users; it captures demand for incident resolution and service requests.
 
 ---
 
-## Continual Improvement (purpose)
+**Q:** How does the service desk contribute to **Design and transition**?
 
-**Q:** What is the purpose of the continual improvement practice?
-
-**A:** To align the organization's practices and services with changing business needs through the ongoing identification and improvement of services, service components, practices, or any elements involved in the efficient and effective management of products and services.
+**A:** It provides a channel for communicating about new and changed services and participates in release planning, testing, and early life support.
 
 ---
 
-## Continual Improvement Model — 7 Steps
+**Q:** How does the service desk contribute to **Deliver and support**?
 
-**Q:** What are the 7 steps of the continual improvement model?
-
-**A:** 1) What is the vision? 2) Where are we now? 3) Where do we want to be? 4) How do we get there? 5) Take action. 6) Did we get there? 7) How do we keep the momentum going? Then repeat.
+**A:** It handles incidents and service requests and keeps users informed of progress.
 
 ---
 
-## Service Value Chain (SVC)
+**Q:** How does the service desk contribute to **Improve**?
 
-**Q:** What is the Service Value Chain?
-
-**A:** A set of interconnected activities an organization performs to create value. It transforms inputs (demand/opportunity) into outputs (value). Not a linear sequence — activities can interact in any order.
+**A:** It provides user feedback and trend data to support improvement initiatives.
 
 ---
 
-## Service Value Chain Activities
+## X IN Y — Continual Improvement
 
-**Q:** What are the 6 activities of the Service Value Chain?
+**Q:** How does continual improvement contribute to **Plan**?
 
-**A:** Plan, Engage, Design & transition, Obtain/build, Deliver & support, Improve. All external interactions go through Engage; all improvement goes through Improve.
-
----
-
-## Guiding Principle
-
-**Q:** What is a guiding principle?
-
-**A:** A recommendation that guides an organization in all circumstances, applied universally to every initiative and stakeholder relationship regardless of changes in goals, strategies, or structure.
+**A:** It contributes improvement plans to organizational strategy and ensures improvement is reflected in the organization's planning.
 
 ---
 
-## 7 Guiding Principles — Mnemonic
+**Q:** How does continual improvement contribute to **Design and transition**?
 
-**Q:** What mnemonic helps remember the 7 guiding principles in order?
-
-**A:** "For Students, Practice Creates True Knowledge Online" — Focus on value, Start where you are, Progress iteratively with feedback, Collaborate and promote visibility, Think and work holistically, Keep it simple and practical, Optimize and automate.
+**A:** It embeds improvement into the design of new and changed services.
 
 ---
 
-## 7 Guiding Principles
+**Q:** How does continual improvement contribute to **Improve**?
 
-**Q:** What are the 7 guiding principles of ITIL 4?
-
-**A:** 1) Focus on value, 2) Start where you are, 3) Progress iteratively with feedback, 4) Collaborate and promote visibility, 5) Think and work holistically, 6) Keep it simple and practical, 7) Optimize and automate.
+**A:** It is the primary driver of the Improve activity and leads all improvement initiatives across the organization.
 
 ---
 
-## Service Value System (SVS)
+## GOTCHAS — Exam Traps
 
-**Q:** What is the Service Value System (SVS)?
+**Q:** SLM Plan vs. SLM Design and transition — what's the difference?
 
-**A:** A description of how all components and activities of an organization work together as a system to enable value co-creation. Input is opportunity/demand; output is value.
-
----
-
-## SVS Components
-
-**Q:** What are the components of the Service Value System?
-
-**A:** Guiding principles, Governance, Service value chain, Practices (34 total), and Continual improvement.
+**A:** **Plan** = performance data and trends (numbers). **Design and transition** = customer feedback (what customers said during interactions). Both sound like "feedback" but the target is different.
 
 ---
 
-## Four Dimensions of Service Management
+**Q:** SLM Obtain/build — what does SLM actually do there? (Most people leave it blank.)
 
-**Q:** What are the four dimensions of service management?
-
-**A:** 1) Organizations & people, 2) Information & technology, 3) Partners & suppliers, 4) Value streams & processes. Every product and service should be considered from all four perspectives.
+**A:** It provides objectives for components and service performance, and sets measurement and reporting requirements. It's about defining what "good" looks like for each component — not building anything itself.
 
 ---
 
-## Four Dimensions — External Factors
+**Q:** SRM Design and transition vs. SRM Deliver and support — what's the difference?
 
-**Q:** What external factors affect all four dimensions of service management?
-
-**A:** PESTLE — Political, Economical, Social, Technological, Legal, and Environmental factors.
+**A:** **Design and transition** = initiates standard changes. **Deliver and support** = keeps users productive when they need help. One triggers changes; the other fulfills requests in day-to-day support.
 
 ---
 
-## Service Offering
+**Q:** SRM → Improve: does service request management contribute? (Trap: many tables leave it blank.)
 
-**Q:** What is a service offering?
-
-**A:** A description of one or more services designed to address the needs of a target consumer group. Can include goods, access to resources, and service actions.
+**A:** Yes. SRM provides trend, quality, and feedback information about request fulfillment and also provides a channel for improvement ideas, compliments, and complaints.
 
 ---
 
-## Goods (as part of a service offering)
+**Q:** Change enablement → Deliver and support: what does it actually do there? (Trap: it's NOT deploying changes.)
 
-**Q:** What are goods in the context of a service offering?
-
-**A:** Things transferred from the service provider to the consumer, after which the consumer is responsible for their future use.
+**A:** Deployment management deploys. Change enablement communicates information about changes to D&S personnel and may involve them in assessing and authorizing those changes.
 
 ---
 
-## Access to Resources (as part of a service offering)
+**Q:** Change enablement → Engage: does change enablement touch Engage? (Trap: often shown as blank.)
 
-**Q:** What is "access to resources" in the context of a service offering?
-
-**A:** Access or a license granted to a consumer under agreed terms and conditions. The resources remain under the service provider's control.
+**A:** Yes. Customers and users may need to be consulted or informed about changes, depending on the nature of the change.
 
 ---
 
-## Service Actions (as part of a service offering)
+**Q:** Change enablement → Improve: does change enablement touch Improve? (Trap: often shown as blank.)
 
-**Q:** What are service actions in the context of a service offering?
-
-**A:** Actions performed to address a consumer's need, such as ongoing technical support or security updates.
+**A:** Yes. Any improvement that requires a change must be assessed and authorized through change enablement, same as all other changes.
 
 ---
 
-## Utility
+**Q:** Service desk vs. incident management — which one captures demand?
 
-**Q:** What is utility?
-
-**A:** The functionality offered by a product or service to meet a particular need. What the service does. Also called "fit for purpose."
+**A:** The **service desk** captures demand (single point of contact). **Incident management** is the practice that resolves incidents. The service desk is a practice; incident management is a separate practice.
 
 ---
 
-## Warranty
+**Q:** Incident management vs. problem management — restore vs. find?
 
-**Q:** What is warranty?
-
-**A:** The assurance that a product or service will meet agreed requirements. How the service performs. Also called "fit for use."
+**A:** **Incident management** = restore normal service ASAP (fix the symptom). **Problem management** = find the root cause (prevent recurrence). Thirteen calls about a domain controller = a problem, not just incidents.
 
 ---
 
-## Utility vs Warranty
+**Q:** Standard vs. normal vs. emergency change — what defines each?
 
-**Q:** What is the difference between utility and warranty?
-
-**A:** Utility = what a service does (fit for purpose). Warranty = how a service performs (fit for use). Both are required for a service to be successful.
+**A:** **Standard** = pre-authorized, low risk, well understood, no additional authorization needed (SRM often initiates these). **Normal** = must be assessed, authorized, and scheduled by a change authority. **Emergency** = must be implemented ASAP; expedited authorization process.
 
 ---
 
-## Risk
+**Q:** SLA metrics show all green, but users report the service is unavailable. Why?
 
-**Q:** What is risk?
-
-**A:** A possible event that could cause harm, loss, or make it more difficult to achieve objectives.
+**A:** The watermelon effect — green on the outside, red on the inside. The data is not based on business outcomes. Teams measure operational metrics (e.g., server uptime) instead of what the business actually experiences. SLM must use business-based measures.
 
 ---
 
-## Risk Responses
+**Q:** Which value chain activity is the quality gate before go-live?
 
-**Q:** What are the 4 ways to handle risk?
-
-**A:** Avoid (remove it completely), Accept (acknowledge and take no action), Transfer (shift responsibility to a third party, e.g. insurance), Mitigate (reduce the risk without eliminating it).
+**A:** **Design and transition** — it ensures products and services continually meet stakeholder expectations for quality, costs, and time to market.
 
 ---
 
-## Cost
+**Q:** An organization sets up a 9-step automated process to purchase and deliver exam vouchers. Which dimension?
 
-**Q:** What is cost?
-
-**A:** The amount of money spent on a particular activity or resource.
+**A:** **Value streams and processes** — the focus is on the workflow and how activities are organized to create value. Even if technology performs the steps, the question describes a process, not a tool.
 
 ---
 
-## Output
+**Q:** Which value chain activity uses incident records as input to identify patterns and drive improvements?
 
-**Q:** What is an output?
-
-**A:** A tangible or intangible deliverable produced by carrying out an activity. (Different from outcome — an outcome is the result for a stakeholder enabled by one or more outputs.)
+**A:** **Improve** — incident records feed into the Improve activity based on frequency and severity of incidents.
 
 ---
 
-## Outcome
+**Q:** Deployment management vs. release management vs. change enablement — what moves to live?
 
-**Q:** What is an outcome?
-
-**A:** A result for a stakeholder, enabled by one or more outputs.
+**A:** **Deployment management** physically moves components to the live environment. **Release management** makes new/changed services available for use. **Change enablement** assesses risk, authorizes, and schedules changes. Only deployment management actually deploys.
 
 ---
-
-## Service Relationship
-
-**Q:** What is a service relationship?
-
-**A:** A cooperation between a service provider and a service consumer that includes service provision, service consumption, and service relationship management.
-
----
-
-## Service Provision
-
-**Q:** What is service provision?
-
-**A:** The activities performed by an organization to provide services, including managing resources, providing access to users, fulfilling service actions, and conducting service level management and continual improvement.
-
----
-
-## Service Consumption
-
-**Q:** What is service consumption?
-
-**A:** The activities performed by an organization or person to consume services, including managing consumer resources needed to use the service and requesting service actions.
-
----
-
-## Service Relationship Management
-
-**Q:** What is service relationship management?
-
-**A:** The joint activities performed by both the service provider and service consumer to enable value co-creation based on agreed and available service offerings.
-
----
-
-## Service Management
-
-**Q:** What is service management?
-
-**A:** A set of specialized organizational capabilities for enabling value to customers in the form of services.
-
----
-
-## Value
-
-**Q:** What is value?
-
-**A:** The perceived benefits, usefulness, and importance of something. Value is always subjective and determined by the recipient.
-
----
-
-## Organization
-
-**Q:** What is an organization?
-
-**A:** A person or a group of people that has its own functions with responsibilities, authorities, and relationships to achieve its objectives.
-
----
-
-## Service Provider
-
-**Q:** What is a service provider?
-
-**A:** A role performed by an organization in a service relationship to provide services to consumers.
-
----
-
-## Consumer
-
-**Q:** What is a consumer?
-
-**A:** A role performed by an organization in a service relationship that uses or consumes those services.
-
----
-
-## User
-
-**Q:** What is a user?
-
-**A:** A person who uses a service.
-
----
-
-## Customer
-
-**Q:** What is a customer?
-
-**A:** A person who defines the requirements for a service and takes responsibility for the outcomes of service consumption.
-
----
-
-## Sponsor
-
-**Q:** What is a sponsor?
-
-**A:** A person who authorizes the budget for service consumption.
-
----
-
-## Quiz — Value Streams & Processes vs Information & Technology
-
-**Q:** An organization sets up a 9-step automated process to purchase and deliver exam vouchers. Which dimension does this best represent?
-
-**A:** Value streams and processes — it focuses on the activities and how they are organized to create value. Even though technology performs the steps, the question is about the PROCESS, not the tools. When a scenario describes a workflow or series of steps, think value streams and processes first.
-
----
-
-## Quiz — Deployment Management Purpose
-
-**Q:** What is the purpose of deployment management?
-
-**A:** Moving new or changed hardware, software, documentation, processes, or any other service component to live environments. (Not change enablement = risk/authorize/schedule. Not release management = make available for use.)
-
----
-
-## Quiz — Change Enablement vs Release vs Deployment
-
-**Q:** What is the difference between change enablement, release management, and deployment management?
-
-**A:** Change enablement = assess risk, authorize, and schedule changes. Release management = make new/changed services and features available for use. Deployment management = physically move components to the live environment.
-
----
-
-## Quiz — Service Request Management → Obtain/Build
-
-**Q:** How does service request management contribute to the "obtain/build" value chain activity?
-
-**A:** It acquires pre-approved service components to help fulfill service requests. (Design & transition = initiates standard changes. Obtain/build = acquires the components needed.)
-
----
-
-## Quiz — Service Request Management → Improve
-
-**Q:** How does service request management contribute to the "improve" value chain activity?
-
-**A:** It provides trend, quality, and feedback information about the fulfillment of service requests. (Not initiating standard changes — that's Design & transition.)
-
----
-
-## Quiz — Incident Management → Improve
-
-**Q:** Which value chain activity uses incident records as input to improvement activities based on incident frequency and severity?
-
-**A:** Improve. Incident records feed into the Improve activity to identify patterns and drive improvements based on how often and how severely incidents occur.
-
----
-
-## Quiz — Design and Transition Purpose
-
-**Q:** Which value chain activity ensures that products and services continually meet stakeholder expectations for quality, costs, and time to market?
-
-**A:** Design and transition. It is the quality gate before go-live — ensuring what gets built matches what was promised in terms of quality, cost, and timing.
